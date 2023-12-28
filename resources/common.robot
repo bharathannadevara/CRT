@@ -41,6 +41,11 @@ Login
     ${MFA_needed}=       Run Keyword And Return Status          Should Not Be Equal    ${None}       ${secret}
     Run Keyword If       ${MFA_needed}               Fill MFA
 
+LogOut
+    ClickText                   View profile
+    Clicktext                   Log Out
+    Sleep                       2
+
 
 Login As
     [Documentation]       Login As different persona. User needs to be logged into Salesforce with Admin rights
