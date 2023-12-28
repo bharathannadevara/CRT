@@ -7,19 +7,19 @@ Library                    QWeb
 Library                    QForce
 Library                    QVision
 Library                    Collections
-Suite Setup                Open Browser                about:blank                chrome
+Suite Setup                Open Browser                about:blank                 chrome
 Suite Teardown             Close All Browsers
 
 *** Variables ***
-${FILE}                    copado.jpg
+${FILE}                    Shooter.pdf
 
 *** Test Cases ***
     Runkeyword             Login
     LaunchApp              Sales
     ClickText              Accounts
     ClickText              New
-    TypeText               *Account Name               GIT image file
-    ClickText              Save                        partial_match=False        # Do not accept partial match, i.e. "Save All"
+    TypeText               *Account Name               GIT pdf file
+    ClickText              Save                        partial_match=False         # Do not accept partial match, i.e. "Save All"
 
     ClickText              Related
     ClickText              Upload Files
@@ -28,10 +28,10 @@ ${FILE}                    copado.jpg
     Log                    ${FILE_PATH}                console=true
 
     QVision.DoubleClick    suite                       anchor=9
-    # QVision.DoubleClick                              resources                  anchor=3
-    QVision.ClickText     copado.jpg
+    # QVision.DoubleClick                              resources                   anchor=3
+    QVision.ClickText      Shooter.pdf
     QVision.ClickText      Open                        anchor=Cancel
 
     ClickText              Done
 
-    Run keyword            LogOut
+    #Run keyword           LogOut
