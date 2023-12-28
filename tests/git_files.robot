@@ -34,4 +34,4 @@ ${FILE}                    copado.jpg
 
     ClickText              Done
 
-    Runkeyword             LogOut
+    Run keyword            LogOut
