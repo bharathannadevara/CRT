@@ -33,3 +33,5 @@ ${FILE}                    copado.jpg
     QVision.ClickText      Open                        anchor=Cancel
 
     ClickText              Done
+
+    Runkeyword             LogOut
