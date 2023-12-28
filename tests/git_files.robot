@@ -11,14 +11,14 @@ Suite Setup                Open Browser                about:blank              
 Suite Teardown             Close All Browsers
 
 *** Variables ***
-${FILE}                    speed.txt
+${FILE}                    copado.jpg
 
 *** Test Cases ***
     Runkeyword             Login
     LaunchApp              Sales
     ClickText              Accounts
     ClickText              New
-    TypeText               *Account Name               GIT file
+    TypeText               *Account Name               GIT image file
     ClickText              Save                        partial_match=False        # Do not accept partial match, i.e. "Save All"
 
     ClickText              Related
@@ -29,7 +29,7 @@ ${FILE}                    speed.txt
 
     QVision.DoubleClick    suite                       anchor=9
     # QVision.DoubleClick                              resources                  anchor=3
-    QVision.ClickText     speed.txt
+    QVision.ClickText     copado.jpg
     QVision.ClickText      Open                        anchor=Cancel
 
     ClickText              Done
