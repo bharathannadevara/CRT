@@ -13,12 +13,12 @@ Library              DataDriver                  reader_class=TestDataApi    nam
 *** Test Cases ***
 Entering A Lead With Data
     [Tags]           AllData
-    
+
 *** Keywords ***
-    [Arguments]      ${Product1}                 ${Product2}                 ${Product3}                ${Qty1}                    ${Qty2}    ${Qty3}
+    [Arguments]      ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                     ${Qty2}    ${Qty3}
     [tags]           Lead
     Appstate         Home
-    
+
     #Adding Product
     ClickText        Edit Products               # Account industry Error
     # UseTable       Action
@@ -29,31 +29,42 @@ Entering A Lead With Data
     ClickText        ${Product1}
     Verifytext       Qty
     ClickElement     xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText         Qty                         ${Qty1}                     Line Item Type             recognition_mode=vision
+    TypeText         Qty                         ${Qty1}                     Line Item Type          recognition_mode=vision
     #Product2
     ClickText        ${Product2}
     Verifytext       Qty
     ClickElement     xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText         Qty                         ${Qty2}                     Line Item Type             recognition_mode=vision
+    TypeText         Qty                         ${Qty2}                     Line Item Type          recognition_mode=vision
     #Product3
     ClickText        ${Product3}
     Verifytext       Qty
     ClickElement     xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText         Qty                         ${Qty3}                     Line Item Type             recognition_mode=vision
+    TypeText         Qty                         ${Qty3}                     Line Item Type          recognition_mode=vision
     ClickText        Save
-    
-    Clicktext        PDF
-    UsePdf           QuotePDF.pdf
+
+    # Clicktext      PDF
+    # UsePdf         QuotePDF.pdf
+    ${FILE_PATH}     Set Variable                ${EXECDIR}/${FILE}
+    Log              ${FILE_PATH}                console=true
+    ${pdf_text}=     Get Pdf Text
+    Log              ${pdf_text}
     SwitchBrowser    On
 
-    ${FILE_PATH}           Set Variable                ${EXECDIR}/files/${FILE}
-    Log                    ${FILE_PATH}                console=true
+    ${FILE_PATH}     Set Variable                ${CURDIR}/../QuotePDF.pdf
+    Log              ${FILE_PATH}                console=true
+    UsePdf           ${FILE_PATH}
 
-    ${text}          GetPdfText                  #returns whole content
+    Verify pdf text        Notes
+    # ${Verify}      VerifyPdfText               The charges reflected hereunder do not include taxes.                           normalize=True
+    # Log            ${Verify}
+    # ScrollText     Special Instructions for Agreement
+    # TypeText       Special Instructions for Agreement                      ${Verify}
+
+    ${text}          GetPdfText                  Notes               chars=100                #returns 10 chars, starting from text xyz.
     VerifyText       ${text}
-    # Verify Pdf Text                            text=SecureWorks            normalize=True
-    # ${PDFtext}     GetPdfText                  locator=Notes               chars=100
-    # Log            ${PDFtext}
+
+
+
     Switch Window    index=1                     delay=1
     ClickText        Approve Quote
     ClickText        Return to Quote
@@ -83,24 +94,24 @@ Entering A Lead With Data
 
 
 
-    # Runkeyword             Login
-    # LaunchApp              Sales
-    # ClickText              Accounts
-    # ClickText              New
-    # TypeText               *Account Name               GIT pdf file
-    # ClickText              Save                        partial_match=False         # Do not accept partial match, i.e. "Save All"
+    # Runkeyword     Login
+    # LaunchApp      Sales
+    # ClickText      Accounts
+    # ClickText      New
+    # TypeText       *Account Name               GIT pdf file
+    # ClickText      Save                        partial_match=False         # Do not accept partial match, i.e. "Save All"
 
-    # ClickText              Related
-    # ClickText              Upload Files
+    # ClickText      Related
+    # ClickText      Upload Files
 
-    # ${FILE_PATH}           Set Variable                ${EXECDIR}/files/${FILE}
-    # Log                    ${FILE_PATH}                console=true
+    # ${FILE_PATH}                               Set Variable                ${EXECDIR}/files/${FILE}
+    # Log            ${FILE_PATH}                console=true
 
-    # QVision.DoubleClick    suite                       anchor=9
-    # # QVision.DoubleClick                              resources                   anchor=3
-    # QVision.ClickText      Shooter.pdf
-    # QVision.ClickText      Open                        anchor=Cancel
+    # QVision.DoubleClick                        suite                       anchor=9
+    # # QVision.DoubleClick                      resources                   anchor=3
+    # QVision.ClickText                          Shooter.pdf
+    # QVision.ClickText                          Open                        anchor=Cancel
 
-    # ClickText              Done
+    # ClickText      Done
 
-    # #Run keyword           LogOut
+    # #Run keyword                               LogOut
