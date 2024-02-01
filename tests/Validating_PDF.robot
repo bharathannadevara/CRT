@@ -43,8 +43,12 @@ Entering A Lead With Data
     ClickText        Save
     
     Clicktext        PDF
-    UsePdf           QuotePDF
+    UsePdf           QuotePDF.pdf
     SwitchBrowser    On
+
+    ${FILE_PATH}           Set Variable                ${EXECDIR}/files/${FILE}
+    Log                    ${FILE_PATH}                console=true
+
     ${text}          GetPdfText                  #returns whole content
     VerifyText       ${text}
     # Verify Pdf Text                            text=SecureWorks            normalize=True
