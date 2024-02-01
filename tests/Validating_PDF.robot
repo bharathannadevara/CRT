@@ -44,11 +44,6 @@ Entering A Lead With Data
 
     # Clicktext      PDF
     # UsePdf         QuotePDF.pdf
-    ${FILE_PATH}     Set Variable                ${EXECDIR}/${FILE}
-    Log              ${FILE_PATH}                console=true
-    ${pdf_text}=     Get Pdf Text
-    Log              ${pdf_text}
-    SwitchBrowser    On
 
     ${FILE_PATH}     Set Variable                ${CURDIR}/../QuotePDF.pdf
     Log              ${FILE_PATH}                console=true
