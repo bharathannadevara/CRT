@@ -60,7 +60,7 @@ Entering A Lead With Data
     # ScrollText     Special Instructions for Agreement
     # TypeText       Special Instructions for Agreement                      ${Verify}
 
-    ${text}          GetPdfText                  Notes               chars=100                #returns 10 chars, starting from text xyz.
+    ${text}          GetPdfText                  Locator=Notes               chars=100                #returns 10 chars, starting from text xyz.
     VerifyText       ${text}
 
 
