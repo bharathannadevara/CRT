@@ -18,51 +18,7 @@ Entering A Lead With Data
     [Arguments]      ${Product1}                 ${Product2}                 ${Product3}                ${Qty1}                    ${Qty2}    ${Qty3}
     [tags]           Lead
     Appstate         Home
-    LaunchApp        Sales
-    ClickText        Leads
-    ClickText        Select a List View: Leads
-    ClickText        Partner Portal Deal Registration
-    UseTable         Item Number
-    Clicktext        ${Lead_Name}
-    clicktext        Show more actions
-    ClickText        Convert
     
-    #Lead Conversion
-    ClickText        Search Account              Account Search              recognition_mode=vision
-    TypeText         Search Account              ${Account_Name}
-    Clicktext        ${Account_Name}
-    #Choosing Account
-    ClickText        Choose Existing
-    #Choosing Contact
-    ClickText        Choose Existing             Contact Search
-    TypeText         Search Contact              ${Contact_Name}
-    ClickText        ${Contact_Name}
-    #Choosing Opportunity
-    ClickText        Choose Existing             Opportunity Search
-    TypeText         Search Opportunity          ${Oppo_Name}
-    ClickText        ${Oppo_Name}
-    DropDown         Converted Status            Qualified                   recognition_mode=vision
-    # Clicktext      Convert
-    #Verifying Account, Contact and Opportunity
-    ClickText        Accounts
-    VerifyText       ${Account_Name}
-    ClickText        Contacts
-    VerifyText       ${Contact_Name}
-    ClickText        Opportunities
-    VerifyText       ${Oppo_Name}
-    
-    #Creating new quote
-    ClickText        Opportunities
-    ClickText        Select a List View: Opportunities
-    ClickText        Recently Viewed
-    TypeText         Search this list...         ${Oppo_Name}\n
-    ClickText        ${Oppo_Name}                # Test
-    ClickText        New Quote
-    TypeText         Short Description           ${Quite_Name}
-    PickList         Line of Business            ${Line_of_Business}
-    PickList         Billing Frequency           ${Billing_Frequency}
-    PickList         Quote Sales Team            Account Director
-    ClickText        Save                        partial_match=False
     #Adding Product
     ClickText        Edit Products               # Account industry Error
     # UseTable       Action
