@@ -50,10 +50,7 @@ Entering A Lead With Data
     UsePdf           ${FILE_PATH}
 
     Verify pdf text        Notes
-    # ${Verify}      VerifyPdfText               The charges reflected hereunder do not include taxes.                           normalize=True
-    # Log            ${Verify}
-    # ScrollText     Special Instructions for Agreement
-    # TypeText       Special Instructions for Agreement                      ${Verify}
+    
 
     ${text}          GetPdfText                  Locator=Notes               chars=100                #returns 10 chars, starting from text xyz.
     VerifyText       ${text}
