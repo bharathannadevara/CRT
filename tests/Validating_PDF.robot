@@ -45,7 +45,7 @@ Entering A Lead With Data
     Clicktext          PDF
     # SwitchBrowser      New
     ScrollText         Notes
-    # UsePdf           QuotePDF
+    UsePdf           QuotePDF.pdf
 
     ${FILE_PATH}       Set Variable                ${CURDIR}/../QuotePDF.pdf
     Log                ${FILE_PATH}                console=true
