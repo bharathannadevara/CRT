@@ -4,7 +4,7 @@ Library                QWeb
 Suite Setup            Setup Browser
 Suite Teardown         End suite
 Library                DataDriver                  reader_class=TestDataApi    name=SecureWork.xlsx
-
+Library                QImage
 # #                    *** Variables ***
 #                      ${ExpectedText}             "The charges reflected hereunder do not include taxes. Unless Partner has provided Secureworks Japan K.K. ("Secureworks") with a valid resale or emption certificate, \n
 # Partner will be responsible for any sales, use, value-added or import taxes, customs duties or similar taxes, if applicable,
@@ -15,7 +15,7 @@ Entering A Lead With Data
     [Tags]             AllData
 
 *** Keywords ***
-    [Arguments]        ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                     ${Qty2}    ${Qty3}
+    [Arguments]        ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                    ${Qty2}    ${Qty3}
     [tags]             Lead
     Appstate           Home
 
@@ -43,22 +43,22 @@ Entering A Lead With Data
     ClickText          Save
 
     Clicktext          PDF
-    # SwitchBrowser      New
+    # SwitchBrowser    New
     ScrollText         Notes
-    UsePdf           QuotePDF.pdf
+    UsePdf             QuotePDF.pdf
 
     ${FILE_PATH}       Set Variable                ${CURDIR}/../QuotePDF.pdf
     Log                ${FILE_PATH}                console=true
     UsePdf             ${FILE_PATH}
 
-    ${text}            Verify pdf text    Proposal Code                        #Notes
+    ${text}            Verify pdf text             Proposal Code               #Notes
     SwitchWindow       New
     ClickText          Edit Version
     ScrollText         MBG Detail
-    TypeText           MBG Detail                               ${text}
+    TypeText           MBG Detail                  ${text}
 
-    ${text}            GetPdfText                  ${CURDIR}/../QuotePDF.pdf           chars=100               #returns 10 chars, starting from text xyz.
-    VerifyText         ${text}
+    # ${text} =        GetPdfText                  char=100                    #returns 10 chars, starting from text xyz.
+    # VerifyText       ${text}
 
 
 
@@ -66,12 +66,18 @@ Entering A Lead With Data
     ClickText          Approve Quote
     ClickText          Return to Quote
 
+    Use Pdf            ${CURDIR}/../QuotePDF.pdf
 
+    # Extract text from the currently defined PDF file
+    ${pdf_text}=       Get Pdf Text
 
+    # Verify that the extracted text includes the expected text
+    Verify Pdf Text    Your expected text here
+    TypeText           Freeform                    ${pdf_text}
 
+   Use Pdf      C:/Users/Trupti/Downloads/QuotePDF.pdf
 
-
-
+    Use Pdf       ${EXECDIR}/QuotePDF.pdf
 
 
 
