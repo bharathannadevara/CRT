@@ -57,8 +57,8 @@ Entering A Lead With Data
     ScrollText         MBG Detail
     TypeText           MBG Detail                               ${text}
 
-    # ${text}            GetPdfText                  Locator=Notes               chars=100               #returns 10 chars, starting from text xyz.
-    # VerifyText         ${text}
+    ${text}            GetPdfText                  ${CURDIR}/../QuotePDF.pdf           chars=100               #returns 10 chars, starting from text xyz.
+    VerifyText         ${text}
 
 
 
