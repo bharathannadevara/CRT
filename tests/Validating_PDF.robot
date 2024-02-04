@@ -75,7 +75,7 @@ Entering A Lead With Data
     Verify Pdf Text    Your expected text here
     TypeText           Freeform                    ${pdf_text}
 
-   Use Pdf      C:/Users/Trupti/Downloads/QuotePDF.pdf
+   Use Pdf      C:\Users\Trupti\Downloads\crt
 
     Use Pdf       ${EXECDIR}/QuotePDF.pdf
 
