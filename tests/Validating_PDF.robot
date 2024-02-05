@@ -19,7 +19,7 @@ Entering A Lead With Data
     [Arguments]          ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                    ${Qty2}    ${Qty3}
     [tags]               Lead
     Appstate             Home
-
+    
     #Adding Product
     ClickText            Edit Products               # Account industry Error
     # UseTable           Action
@@ -66,7 +66,7 @@ Entering A Lead With Data
     Switch Window        index=1                     delay=1
     ClickText            Approve Quote
     ClickText            Return to Quote
-    
+
     Use Pdf              ${CURDIR}/../QuotePDF.pdf
 
     # Extract text from the currently defined PDF file
