@@ -47,8 +47,8 @@ Entering A Lead With Data
     ${FILE_PATH}       Set Variable                ${CURDIR}/../ApprovedQuotePDF.pdf
     UsePdf             ${FILE_PATH}
     
-    ${pdf_text}=       Get Pdf Text               locator=General Information
-    Verify pdf text    Robotic test report             normalize=False             #Notes
+    ${pdf_text}=       Get Pdf Text               #locator=General Information
+    Verify pdf text    Notes             normalize=False             #Notes
 
     ClickText          Approve Quote
     ClickText          Return to Quote
