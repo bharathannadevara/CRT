@@ -44,8 +44,10 @@ Entering A Lead With Data
     ClickText          Save
 
     # Verifying PDF text
-    UsePdf             ${CURDIR}/../QuotePDF.pdf
-    ${pdf_text}=       Get Pdf Text               
+    
+    ${FILE_PATH}       Set Variable                ${CURDIR}/../QuotePDF.pdf
+    UsePdf             QuotePDF
+    ${pdf_text}=       Get Pdf Text               locator=General Information
     Verify pdf text    General Information             normalize=False             #Notes
 
     ClickText          Approve Quote
