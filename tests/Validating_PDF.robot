@@ -15,10 +15,10 @@ Library                  OperatingSystem
 Entering A Lead With Data
     [Tags]               AllData
 
-*** Keywords ***
-    [Arguments]          ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                    ${Qty2}    ${Qty3}
-    [tags]               Lead
-    Appstate             Home
+# *** Keywords ***
+#     [Arguments]          ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                    ${Qty2}    ${Qty3}
+#     [tags]               Lead
+#     Appstate             Home
 
     # #Adding Product
     # ClickText            Edit Products               # Account industry Error
@@ -76,10 +76,10 @@ Entering A Lead With Data
     ${pdf_text}=         Get Pdf Text                locator=Run environment     chars=400
 
     # Verify that the extracted text includes the expected text
-    ${rrr}               Verify Pdf Text      Run environment45678                    normalize=False 
+    Verify Pdf Text      Run environment                   normalize=False 
 
-    ClickText            Search...
-    TypeText             Search Quotes and more...               ${rrr}  
+    # ClickText            Search...
+    # TypeText             Search Quotes and more...               ${rrr}  
 
     # Use Pdf              C:\Users\Trupti\Downloads\crt
     # Use Pdf              C:/Users/Trupti/Downloads/crt/pdf_files.pdf
