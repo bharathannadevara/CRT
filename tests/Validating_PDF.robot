@@ -47,7 +47,7 @@ Entering A Lead With Data
     ${FILE_PATH}       Set Variable                ${CURDIR}/../ApprovedQuotePDF.pdf
     UsePdf             ${FILE_PATH}
     
-    ${pdf_text}=       Get Pdf Text               locator=General Information                        Char=500
+    ${pdf_text}=       Get Pdf Text               locator=Notes                        Char=500
     Verify pdf text    Notes             normalize=False             #Notes
 
     ClickText          Approve Quote
