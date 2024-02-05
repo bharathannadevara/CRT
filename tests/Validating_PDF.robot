@@ -66,7 +66,7 @@ Entering A Lead With Data
     Switch Window        index=1                     delay=1
     ClickText            Approve Quote
     ClickText            Return to Quote
------------------------------------------------------------------------
+    
     Use Pdf              ${CURDIR}/../QuotePDF.pdf
 
     # Extract text from the currently defined PDF file
