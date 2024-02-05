@@ -46,7 +46,7 @@ Entering A Lead With Data
     # Verifying PDF text
     
     ${FILE_PATH}       Set Variable                ${CURDIR}/../QuotePDF.pdf
-    UsePdf             QuotePDF
+    UsePdf             QuotePDF.pdf
     ${pdf_text}=       Get Pdf Text               locator=General Information
     Verify pdf text    General Information             normalize=False             #Notes
 
