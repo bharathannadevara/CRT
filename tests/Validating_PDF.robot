@@ -19,67 +19,72 @@ Entering A Lead With Data
     [Arguments]          ${Product1}                 ${Product2}                 ${Product3}             ${Qty1}                    ${Qty2}    ${Qty3}
     [tags]               Lead
     Appstate             Home
-    
-    #Adding Product
-    ClickText            Edit Products               # Account industry Error
-    # UseTable           Action
-    #ClickText           Expand All
-    ClickText            Dell SafeGuard
-    Clicktext            ManagedXDR OT
-    #Product1
-    ClickText            ${Product1}
-    Verifytext           Qty
-    ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText             Qty                         ${Qty1}                     Line Item Type          recognition_mode=vision
-    #Product2
-    ClickText            ${Product2}
-    Verifytext           Qty
-    ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText             Qty                         ${Qty2}                     Line Item Type          recognition_mode=vision
-    #Product3
-    ClickText            ${Product3}
-    Verifytext           Qty
-    ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
-    TypeText             Qty                         ${Qty3}                     Line Item Type          recognition_mode=vision
-    ClickText            Save
 
-    Clicktext            PDF
-    # SwitchBrowser      New
-    ScrollText           Notes
-    UsePdf               QuotePDF.pdf
+    # #Adding Product
+    # ClickText            Edit Products               # Account industry Error
+    # # UseTable           Action
+    # #ClickText           Expand All
+    # ClickText            Dell SafeGuard
+    # Clicktext            ManagedXDR OT
+    # #Product1
+    # ClickText            ${Product1}
+    # Verifytext           Qty
+    # ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
+    # TypeText             Qty                         ${Qty1}                     Line Item Type          recognition_mode=vision
+    # #Product2
+    # ClickText            ${Product2}
+    # Verifytext           Qty
+    # ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
+    # TypeText             Qty                         ${Qty2}                     Line Item Type          recognition_mode=vision
+    # #Product3
+    # ClickText            ${Product3}
+    # Verifytext           Qty
+    # ClickElement         xpath=//*[@id="j_id0:mainForm:QPBlock:priceTable:0:qty"]
+    # TypeText             Qty                         ${Qty3}                     Line Item Type          recognition_mode=vision
+    # ClickText            Save
 
-    ${FILE_PATH}         Set Variable                ${CURDIR}/../QuotePDF.pdf
-    Log                  ${FILE_PATH}                console=true
-    UsePdf               ${FILE_PATH}
+    # Clicktext            PDF
+    # # SwitchBrowser      New
+    # ScrollText           Notes
+    # UsePdf               QuotePDF.pdf
 
-    ${text}              Verify pdf text             Proposal Code               #Notes
-    SwitchWindow         New
-    ClickText            Edit Version
-    ScrollText           MBG Detail
-    TypeText             MBG Detail                  ${text}
+    # ${FILE_PATH}         Set Variable                ${CURDIR}/../CRT_Demo.pdf
+    # Log                  ${FILE_PATH}                console=true
+    # UsePdf               ${FILE_PATH}
 
-    # ${text} =          GetPdfText                  char=100                    #returns 10 chars, starting from text xyz.
-    # VerifyText         ${text}
+    # ${text}              Verify pdf text             Run environment             normalize=False             #Notes
+    # ClickText            Search...                   
+    # TypeText             Search Quotes and more...                   ${text}
+
+    # SwitchWindow         New
+    # ClickText            Edit Version
+    # ScrollText           MBG Detail
+    # TypeText             MBG Detail                  ${text}
+
+    # # ${text} =          GetPdfText                  char=100                    #returns 10 chars, starting from text xyz.
+    # # VerifyText         ${text}
 
 
 
-    Switch Window        index=1                     delay=1
-    ClickText            Approve Quote
-    ClickText            Return to Quote
+    # Switch Window        index=1                     delay=1
+    # ClickText            Approve Quote
+    # ClickText            Return to Quote
 
-    Use Pdf              ${CURDIR}/../QuotePDF.pdf
+    Use Pdf              ${CURDIR}/../CRT_Demo.pdf
 
     # Extract text from the currently defined PDF file
-    ${pdf_text}=         Get Pdf Text                locator=Notes               chars=400
+    ${pdf_text}=         Get Pdf Text                locator=Run environment     chars=400
 
     # Verify that the extracted text includes the expected text
-    Verify Pdf Text      General Information
-    TypeText             Notify Email                ${pdf_text}
+    ${rrr}               Verify Pdf Text      Run environment45678                    normalize=False 
 
-    Use Pdf              C:\Users\Trupti\Downloads\crt
-    Use Pdf              C:/Users/Trupti/Downloads/crt/pdf_files.pdf
-    Use Pdf              ${EXECDIR}/QuotePDF.pdf
-    File Should Exist    C:/Users/Trupti/Downloads/crt/pdf_files.pdf
+    ClickText            Search...
+    TypeText             Search Quotes and more...               ${rrr}  
+
+    # Use Pdf              C:\Users\Trupti\Downloads\crt
+    # Use Pdf              C:/Users/Trupti/Downloads/crt/pdf_files.pdf
+    # Use Pdf              ${EXECDIR}/QuotePDF.pdf
+    # File Should Exist    C:/Users/Trupti/Downloads/crt/pdf_files.pdf
 
 
 
